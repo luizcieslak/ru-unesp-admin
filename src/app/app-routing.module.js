@@ -10,12 +10,13 @@ var router_1 = require("@angular/router");
 var login_component_1 = require("./login/login.component");
 var cardapio_component_1 = require("./cardapio/cardapio.component");
 var cardapio_detail_component_1 = require("./cardapio-detail/cardapio-detail.component");
+var estatisticas_component_1 = require("./estatisticas/estatisticas.component");
 var routes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'cardapio', component: cardapio_component_1.CardapioComponent },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
-    { path: 'detail/:id', component: cardapio_detail_component_1.CardapioDetailComponent },
-    { path: 'estatisticas', component: cardapio_component_1.CardapioComponent }
+    { path: 'detail', component: cardapio_detail_component_1.CardapioDetailComponent },
+    { path: 'estatisticas', component: estatisticas_component_1.EstatisticasComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
