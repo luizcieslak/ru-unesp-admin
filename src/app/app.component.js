@@ -9,6 +9,9 @@ var core_1 = require("@angular/core");
 var AppComponent = (function () {
     function AppComponent() {
     }
+    AppComponent.prototype.gotoDate = function (model) {
+        console.log('date: ' + model.year + '/' + model.month + '/' + model.day);
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([

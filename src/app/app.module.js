@@ -7,6 +7,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
+var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var angularfire2_1 = require("angularfire2");
 //import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -17,6 +18,7 @@ var cardapio_component_1 = require("./cardapio/cardapio.component");
 var cardapio_detail_component_1 = require("./cardapio-detail/cardapio-detail.component");
 var estatisticas_component_1 = require("./estatisticas/estatisticas.component");
 var app_routing_module_1 = require("./app-routing.module");
+var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -26,7 +28,9 @@ AppModule = __decorate([
     core_1.NgModule({
         imports: [
             platform_browser_1.BrowserModule,
+            forms_1.FormsModule,
             app_routing_module_1.AppRoutingModule,
+            ng_bootstrap_1.NgbModule.forRoot(),
             angularfire2_1.AngularFireModule.initializeApp(firebase_config_1.FirebaseConfig),
         ],
         declarations: [

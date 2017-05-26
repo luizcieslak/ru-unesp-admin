@@ -1,1 +1,6 @@
 <h1>cardapio</h1>
+
+<ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
+<hr/>
+
+<pre>Model: {{ model | json }}</pre>
