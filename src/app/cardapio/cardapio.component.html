@@ -1,6 +1,51 @@
-<h1>cardapio</h1>
+<form class="form-horizontal">
+    <div class="form-group row">
+        <label for="base1" class="col-2 col-form-label">Prato Base 1</label>
+        <div class="col-8">
+            <input class="form-control" type="text" id="base1">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="base2" class="col-2 col-form-label">Prato Base 2</label>
+        <div class="col-8">
+            <input class="form-control" type="text" id="base2">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="principal" class="col-2 col-form-label">Prato Principal </label>
+        <div class="col-8">
+            <input class="form-control" type="text" id="principal">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="veg" class="col-2 col-form-label">Vegetariano</label>
+        <div class="col-8">
+            <input class="form-control" type="text" id="veg">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="guarnicao" class="col-2 col-form-label">Guarnição</label>
+        <div class="col-8">
+            <input class="form-control" type="text" id="guarnicao">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="sobremesa" class="col-2 col-form-label">Sobremesa</label>
+        <div class="col-8">
+            <input class="form-control" type="text" id="sobremesa">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="suco" class="col-2 col-form-label">Suco</label>
+        <div class="col-8">
+            <input class="form-control" type="text" id="suco">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Registrar</button>
+        </div>
+    </div>
+</form>
 
-<ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-<hr/>
-
-<pre>Model: {{ model | json }}</pre>
+<pre>Cardapio: {{ cardapio | json }}</pre>
