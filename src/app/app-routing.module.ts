@@ -6,12 +6,16 @@ import { CardapioComponent } from './cardapio/cardapio.component';
 import { CardapioDetailComponent } from './cardapio-detail/cardapio-detail.component';
 import { EstatisticasComponent } from './estatisticas/estatisticas.component';
 
+import { PageNotFoundComponent } from './not-found.component';
+
+
 const routes: Routes = [
   { path: 'login',component: LoginComponent },
   { path: 'cardapio',component: CardapioComponent },
   { path: '', redirectTo: '/login',pathMatch: 'full' },
   { path: 'detail', component: CardapioDetailComponent},
-  { path: 'estatisticas',component: EstatisticasComponent }
+  { path: 'estatisticas',component: EstatisticasComponent },
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

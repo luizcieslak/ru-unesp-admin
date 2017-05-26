@@ -17,6 +17,7 @@ var login_component_1 = require("./login/login.component");
 var cardapio_component_1 = require("./cardapio/cardapio.component");
 var cardapio_detail_component_1 = require("./cardapio-detail/cardapio-detail.component");
 var estatisticas_component_1 = require("./estatisticas/estatisticas.component");
+var not_found_component_1 = require("./not-found.component");
 var app_routing_module_1 = require("./app-routing.module");
 var ng_bootstrap_1 = require("@ng-bootstrap/ng-bootstrap");
 var AppModule = (function () {
@@ -39,7 +40,8 @@ AppModule = __decorate([
             login_component_1.LoginComponent,
             cardapio_component_1.CardapioComponent,
             cardapio_detail_component_1.CardapioDetailComponent,
-            estatisticas_component_1.EstatisticasComponent
+            estatisticas_component_1.EstatisticasComponent,
+            not_found_component_1.PageNotFoundComponent
         ],
         bootstrap: [
             app_component_1.AppComponent

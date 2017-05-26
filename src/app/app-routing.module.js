@@ -11,12 +11,14 @@ var login_component_1 = require("./login/login.component");
 var cardapio_component_1 = require("./cardapio/cardapio.component");
 var cardapio_detail_component_1 = require("./cardapio-detail/cardapio-detail.component");
 var estatisticas_component_1 = require("./estatisticas/estatisticas.component");
+var not_found_component_1 = require("./not-found.component");
 var routes = [
     { path: 'login', component: login_component_1.LoginComponent },
     { path: 'cardapio', component: cardapio_component_1.CardapioComponent },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: 'detail', component: cardapio_detail_component_1.CardapioDetailComponent },
-    { path: 'estatisticas', component: estatisticas_component_1.EstatisticasComponent }
+    { path: 'estatisticas', component: estatisticas_component_1.EstatisticasComponent },
+    { path: '**', component: not_found_component_1.PageNotFoundComponent }
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {

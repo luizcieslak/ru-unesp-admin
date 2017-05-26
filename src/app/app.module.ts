@@ -14,6 +14,7 @@ import { LoginComponent } from './login/login.component';
 import { CardapioComponent } from './cardapio/cardapio.component';
 import { CardapioDetailComponent } from './cardapio-detail/cardapio-detail.component';
 import { EstatisticasComponent } from './estatisticas/estatisticas.component';
+import { PageNotFoundComponent } from './not-found.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -35,7 +36,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     CardapioComponent,
     CardapioDetailComponent,
-    EstatisticasComponent
+    EstatisticasComponent,
+    PageNotFoundComponent
   ],
   bootstrap: [ 
     AppComponent
