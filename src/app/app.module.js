@@ -29,6 +29,7 @@ AppModule = __decorate([
         imports: [
             platform_browser_1.BrowserModule,
             forms_1.FormsModule,
+            forms_1.ReactiveFormsModule,
             app_routing_module_1.AppRoutingModule,
             ng_bootstrap_1.NgbModule.forRoot(),
             angularfire2_1.AngularFireModule.initializeApp(firebase_config_1.FirebaseConfig),

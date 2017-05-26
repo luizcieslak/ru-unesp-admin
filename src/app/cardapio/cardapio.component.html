@@ -1,44 +1,56 @@
-<form class="form-horizontal">
+<form class="form-horizontal" [formGroup]="cardapioForm" novalidate>
     <div class="form-group row">
         <label for="base1" class="col-2 col-form-label">Prato Base 1</label>
         <div class="col-8">
-            <input class="form-control" type="text" id="base1">
+            <input class="form-control" type="text" formControlName="base1">
         </div>
     </div>
     <div class="form-group row">
         <label for="base2" class="col-2 col-form-label">Prato Base 2</label>
         <div class="col-8">
-            <input class="form-control" type="text" id="base2">
+            <input class="form-control" type="text" formControlName="base2">
         </div>
     </div>
     <div class="form-group row">
         <label for="principal" class="col-2 col-form-label">Prato Principal </label>
         <div class="col-8">
-            <input class="form-control" type="text" id="principal">
+            <input class="form-control" type="text" formControlName="principal">
         </div>
     </div>
     <div class="form-group row">
         <label for="veg" class="col-2 col-form-label">Vegetariano</label>
         <div class="col-8">
-            <input class="form-control" type="text" id="veg">
+            <input class="form-control" type="text" formControlName="veg">
         </div>
     </div>
     <div class="form-group row">
         <label for="guarnicao" class="col-2 col-form-label">Guarnição</label>
         <div class="col-8">
-            <input class="form-control" type="text" id="guarnicao">
+            <input class="form-control" type="text" formControlName="guarnicao">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="salada1" class="col-2 col-form-label">Salada 1</label>
+        <div class="col-8">
+            <input class="form-control" type="text" formControlName="salada1">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="salada2" class="col-2 col-form-label">Salada 2</label>
+        <div class="col-8">
+            <input class="form-control" type="text" formControlName="salada2">
         </div>
     </div>
     <div class="form-group row">
         <label for="sobremesa" class="col-2 col-form-label">Sobremesa</label>
         <div class="col-8">
-            <input class="form-control" type="text" id="sobremesa">
+            <input class="form-control" type="text" formControlName="sobremesa">
         </div>
     </div>
     <div class="form-group row">
         <label for="suco" class="col-2 col-form-label">Suco</label>
         <div class="col-8">
-            <input class="form-control" type="text" id="suco">
+            <input class="form-control" type="text" formControlName="suco">
         </div>
     </div>
     <div class="form-group">
@@ -48,4 +60,4 @@
     </div>
 </form>
 
-<pre>Cardapio: {{ cardapio | json }}</pre>
+<pre>Cardapio: {{ cardapioForm.value | json }}</pre>
