@@ -9,6 +9,7 @@ var core_1 = require("@angular/core");
 var now = new Date();
 var CardapioDetailComponent = (function () {
     function CardapioDetailComponent() {
+        this.time = { hour: 13, minute: 30 };
     }
     CardapioDetailComponent.prototype.selectToday = function () {
         this.model = { year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate() };

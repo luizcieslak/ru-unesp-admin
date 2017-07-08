@@ -9,6 +9,10 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var app_component_1 = require("./app.component");
+var angularfire2_1 = require("angularfire2");
+var database_1 = require("angularfire2/database");
+var auth_1 = require("angularfire2/auth");
+var firebase_config_1 = require("./firebase-config");
 var login_component_1 = require("./login/login.component");
 var cardapio_component_1 = require("./cardapio/cardapio.component");
 var cardapio_detail_component_1 = require("./cardapio-detail/cardapio-detail.component");
@@ -28,7 +32,10 @@ AppModule = __decorate([
             forms_1.FormsModule,
             forms_1.ReactiveFormsModule,
             app_routing_module_1.AppRoutingModule,
-            ng_bootstrap_1.NgbModule.forRoot()
+            ng_bootstrap_1.NgbModule.forRoot(),
+            angularfire2_1.AngularFireModule.initializeApp(firebase_config_1.FirebaseConfig),
+            database_1.AngularFireDatabaseModule,
+            auth_1.AngularFireAuthModule // imports firebase/auth, only needed for auth features
         ],
         declarations: [
             app_component_1.AppComponent,

@@ -16,3 +16,4 @@ _temp
 /src/app/firebase-config.ts
 /src/app/firebase-config.js
 /src/app/firebase-config.js.map
+environments/

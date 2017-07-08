@@ -8,7 +8,7 @@ import { AppComponent }  from './app.component';
 //import { AngularFireDatabaseModule } from 'angularfire2/database';
 //import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { FirebaseConfig } from './firebase-config';
+import { environment } from '../environments/environment';
 
 import { LoginComponent } from './login/login.component';
 import { CardapioComponent } from './cardapio/cardapio.component';
@@ -26,8 +26,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    NgbModule.forRoot()
-    //AngularFireModule.initializeApp(FirebaseConfig),
+    NgbModule.forRoot(),
+    //AngularFireModule.initializeApp(environment.firebase),
     //AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     //AngularFireAuthModule // imports firebase/auth, only needed for auth features
   ],
