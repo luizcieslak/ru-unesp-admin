@@ -6,9 +6,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 var core_1 = require("@angular/core");
+var now = new Date();
 var CardapioDetailComponent = (function () {
     function CardapioDetailComponent() {
     }
+    CardapioDetailComponent.prototype.selectToday = function () {
+        this.model = { year: now.getFullYear(), month: now.getMonth() + 1, day: now.getDate() };
+    };
     return CardapioDetailComponent;
 }());
 CardapioDetailComponent = __decorate([

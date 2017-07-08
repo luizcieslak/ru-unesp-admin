@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent }  from './app.component';
 
-import { AngularFireModule } from 'angularfire2';
+//import { AngularFireModule } from 'angularfire2';
 //import { AngularFireDatabaseModule } from 'angularfire2/database';
 //import { AngularFireAuthModule } from 'angularfire2/auth';
 
@@ -26,8 +26,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    NgbModule.forRoot(),
-    AngularFireModule.initializeApp(FirebaseConfig),
+    NgbModule.forRoot()
+    //AngularFireModule.initializeApp(FirebaseConfig),
     //AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     //AngularFireAuthModule // imports firebase/auth, only needed for auth features
   ],
