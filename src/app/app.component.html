@@ -5,7 +5,7 @@
     <a class="navbar-brand" href="#">ru-admin</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav mr-auto" *ngIf="userAuth">
             <li><a class="nav-link" routerLink="/cardapio">Adicionar Refeição</a></li>
             <li><a class="nav-link" routerLink="/detail">Ver Refeição:</a></li>
             <form class="form-inline my-2 my-lg-0">
@@ -15,8 +15,12 @@
                 </div>
             </form>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" *ngIf="userAuth">
             <li class="nav-item"><a class="nav-link" routerLink="/estatisticas">Estatísticas</a></li>
+            <li><a class="nav-link" routerLink="/login">Login</a></li>
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right" *ngIf="!userAuth">
             <li><a class="nav-link" routerLink="/login">Login</a></li>
         </ul>
     </div>
