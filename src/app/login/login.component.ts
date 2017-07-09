@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Router }                 from '@angular/router';
 
-import { AngularFireAuth } from 'angularfire2/auth';
+import { AdminService } from '../providers/admin.service';
 
 import { EmailValidator } from '../validators/email';
 
@@ -21,7 +21,7 @@ export class LoginComponent {
   //String variable that stores the server error in a failed signin.
   private loginError: string;
 
-  constructor(private formBuilder: FormBuilder, private _auth: AngularFireAuth,
+  constructor(private formBuilder: FormBuilder, private _admin: AdminService,
     private router: Router) {
       //Create FormBuilder with your inputs and their Validators.
       this.loginForm = this.formBuilder.group({
@@ -33,7 +33,7 @@ export class LoginComponent {
  login(): void {
     this.submitAttempt = true;
     if(this.loginForm.valid){
-      this._auth.auth.signInWithEmailAndPassword(this.loginForm.value.email,this.loginForm.value.password)
+      this._admin.signInWithEmail(this.loginForm.value.email,this.loginForm.value.password)
         .then(() => this.router.navigate(['/refeicoes/add']))  //if login is sucessfull
         .catch(error => { this.loginError = error.message }); //else, show the error.
     }else{
@@ -42,7 +42,7 @@ export class LoginComponent {
   }
 
  fastLogin(): void{
-   this._auth.auth.signInWithEmailAndPassword("admin@admin.com","ruadmin")
+   this._admin.signInWithEmail("admin@admin.com","ruadmin")
       .then(() => this.router.navigate(['/refeicoes/add']))  //if login is sucessfull
       .catch(error => { this.loginError = error.message }); //else, show the error.
  }

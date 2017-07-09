@@ -20,7 +20,7 @@
         <ul class="nav navbar-nav navbar-right" *ngIf="adminAuth">
             <li class="navbar-item">
                 <span class="navbar-text"> Olá {{(admin | async)?.name}}!</span>
-                <span class="navbar-text" (click)="logout()">Sair</span>
+                <a class="navbar-text" (click)="logout()">Sair</a>
             </li>
         </ul>
 

@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoginComponent } from './login/login.component';
-import { CardapioComponent } from './cardapio/cardapio.component';
-import { CardapioDetailComponent } from './cardapio-detail/cardapio-detail.component';
-import { EstatisticasComponent } from './estatisticas/estatisticas.component';
-import { SaldoComponent } from './saldo/saldo.component';
+import { LoginComponent } from '../login/login.component';
+import { CardapioComponent } from '../cardapio/cardapio.component';
+import { CardapioDetailComponent } from '../cardapio-detail/cardapio-detail.component';
+import { EstatisticasComponent } from '../estatisticas/estatisticas.component';
+import { SaldoComponent } from '../saldo/saldo.component';
 
-import { PageNotFoundComponent } from './not-found.component';
+import { PageNotFoundComponent } from '../not-found/not-found.component';
 
-import { AuthGuard } from './auth-guard.service';
+import { AuthGuard } from '../providers/auth-guard.service';
 
 const routes: Routes = [
   {
