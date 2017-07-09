@@ -1,8 +1,8 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { AppComponent }  from './app.component';
+import { AppComponent } from './app.component';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
@@ -15,13 +15,17 @@ import { CardapioComponent } from './cardapio/cardapio.component';
 import { CardapioDetailComponent } from './cardapio-detail/cardapio-detail.component';
 import { EstatisticasComponent } from './estatisticas/estatisticas.component';
 import { PageNotFoundComponent } from './not-found.component';
+import { SaldoComponent } from './saldo/saldo.component';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
+import { AuthGuard } from './auth-guard.service';
+
+
 @NgModule({
-  imports: [ 
+  imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
@@ -31,16 +35,20 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
     AngularFireAuthModule // imports firebase/auth, only needed for auth features
   ],
-  declarations: [ 
+  declarations: [
     AppComponent,
     LoginComponent,
     CardapioComponent,
     CardapioDetailComponent,
     EstatisticasComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SaldoComponent,
   ],
-  bootstrap: [ 
+  bootstrap: [
     AppComponent
+  ],
+  providers: [
+    AuthGuard
   ]
 })
 export class AppModule { }

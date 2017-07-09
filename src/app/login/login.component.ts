@@ -34,7 +34,7 @@ export class LoginComponent {
     this.submitAttempt = true;
     if(this.loginForm.valid){
       this._auth.auth.signInWithEmailAndPassword(this.loginForm.value.email,this.loginForm.value.password)
-        .then(() => this.router.navigate(['detail']))  //if login is sucessfull
+        .then(() => this.router.navigate(['/refeicoes/add']))  //if login is sucessfull
         .catch(error => { this.loginError = error.message }); //else, show the error.
     }else{
       console.log("loginForm is not valid.");
@@ -43,7 +43,7 @@ export class LoginComponent {
 
  fastLogin(): void{
    this._auth.auth.signInWithEmailAndPassword("admin@admin.com","ruadmin")
-      .then(() => this.router.navigate(['detail']))  //if login is sucessfull
+      .then(() => this.router.navigate(['/refeicoes/add']))  //if login is sucessfull
       .catch(error => { this.loginError = error.message }); //else, show the error.
  }
 }

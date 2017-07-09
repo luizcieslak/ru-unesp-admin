@@ -5,22 +5,26 @@
     <a class="navbar-brand" href="#">ru-admin</a>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto" *ngIf="userAuth">
-            <li><a class="nav-link" routerLink="/cardapio">Adicionar Refeição</a></li>
-            <li><a class="nav-link" routerLink="/detail">Ver Refeição:</a></li>
+        <ul class="navbar-nav mr-auto" *ngIf="adminAuth">
+            <li><a class="nav-link" routerLink="/refeicoes/add">Adicionar Refeição</a></li>
+            <li><a class="nav-link" routerLink="/refeicoes/detail">Ver Refeição:</a></li>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (ngModelChange)="gotoDate(model)">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" (ngModelChange)="gotoDate(date)">
                 <div class="input-group-addon" (click)="d.toggle()">
                     <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
                 </div>
             </form>
+            <li><a class="nav-link" routerLink="/users/saldo">Adicionar Saldo</a></li>
+            <li class="nav-item"><a class="nav-link" routerLink="/refeicoes/estatisticas">Estatísticas</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right" *ngIf="userAuth">
-            <li class="nav-item"><a class="nav-link" routerLink="/estatisticas">Estatísticas</a></li>
-            <li><a class="nav-link" routerLink="/login">Login</a></li>
+        <ul class="nav navbar-nav navbar-right" *ngIf="adminAuth">
+            <li class="navbar-item">
+                <span class="navbar-text"> Olá {{(admin | async)?.name}}!</span>
+                <span class="navbar-text" (click)="logout()">Sair</span>
+            </li>
         </ul>
 
-        <ul class="nav navbar-nav navbar-right" *ngIf="!userAuth">
+        <ul class="nav navbar-nav navbar-right" *ngIf="!adminAuth">
             <li><a class="nav-link" routerLink="/login">Login</a></li>
         </ul>
     </div>
