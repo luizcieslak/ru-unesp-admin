@@ -28,7 +28,7 @@ import { AppRoutingModule } from './routes/app-routing.module';
 import { AuthGuard } from './providers/auth-guard.service';
 import { AdminService } from './providers/admin.service';
 import { RefeicaoService } from './providers/refeicao.service';
-
+import { UserService } from './providers/user.service';
 
 @NgModule({
   imports: [
@@ -56,7 +56,8 @@ import { RefeicaoService } from './providers/refeicao.service';
   providers: [
     AuthGuard,
     AdminService,
-    RefeicaoService
+    RefeicaoService,
+    UserService
   ]
 })
 export class AppModule { }

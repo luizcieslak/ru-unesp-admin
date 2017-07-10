@@ -1,3 +1,28 @@
-<p>
-    saldo works!
-</p>
+<div class="container">
+    <form class="form" [formGroup]="saldoForm" novalidate>
+        <div class="form-group row">
+            <label for="email" class="col-2 col-form-label">Email do usuário</label>
+            <div class="col-8">
+                <input class="form-control" type="text" formControlName="email">
+                <p *ngIf="submitAttempt && saldoForm.controls.email.hasError('required')" style="color: #ea6153;">
+                    Email Obrigatório.
+                </p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="amount" class="col-2 col-form-label">Quantidade</label>
+            <div class="col-8">
+                <input class="form-control" type="number" min="0" formControlName="amount">
+                <p *ngIf="submitAttempt && saldoForm.controls.amount.hasError('required')" style="color: #ea6153;">
+                    Quantidade Obrigatória.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <p *ngIf="submitAttempt && formError" style="color: #ea6153;">{{ formError }}</p>
+                <button type="submit" class="btn btn-default" (click)="register()">Registrar</button>
+            </div>
+        </div>
+    </form>
+</div>
