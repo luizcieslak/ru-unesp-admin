@@ -21,6 +21,9 @@ export class RefeicaoService {
     refeicao['created_by'] = this._admin.email;
     refeicao['vagas'] = 350;
     refeicao['sold_out'] = false;
+    refeicao['queue_count'] = 0;
+    refeicao['users_count'] = 0;
+    refeicao['usersVeg_count'] = 0;
     return Promise.all([
       firebase.database().ref(`refeicoes/`).push(refeicao),
       firebase.database().ref('refeicoes/count').transaction(count => count + 1)

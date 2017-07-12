@@ -1,6 +1,17 @@
 <div class="container">
     <form class="form-horizontal" [formGroup]="addForm" novalidate>
         <div class="form-group row">
+            <label for="base1" class="col-2 col-form-label">Data</label>
+            <div class="col-8">
+                <div class="input-group">
+                    <div class="input-group-addon" (click)="d.toggle()">
+                        <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+                    </div>
+                    <input class="form-control" formControlName="date" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" (ngModelChange)="datePicker(date)">
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
             <label for="base1" class="col-2 col-form-label">Prato Base 1</label>
             <div class="col-8">
                 <input class="form-control" type="text" formControlName="base1">
