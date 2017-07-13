@@ -115,7 +115,9 @@ export class CardapioComponent {
   datePicker(): void {
     if (this.date) {
       //transform this.date to Moment
-      const dateMoment = moment(`${this.date.year}-${this.date.month}-${this.date.day}`).utc();
+      const dateMoment = moment(`${this.date.year}-${this.date.month}-${this.date.day}`)
+        .add(11,'hours').add(30,'minutes')
+        .utc();
       //add 'timestamp' value in form
       this.addForm.patchValue({
         timestamp: moment(dateMoment).valueOf()
