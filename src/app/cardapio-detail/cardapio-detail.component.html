@@ -1,33 +1,66 @@
-<h1>cardapio-detail</h1>
+<div class="container" *ngIf="!date">
+    <form>
+        <div class="form-group">
+            <label for="dp">Selecione uma data:</label>
+            <div class="input-group">
+                <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" (ngModelChange)="gotoDate(date)">
+                <div class="input-group-addon" (click)="d.toggle()">
+                    <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
 
-<p>
-    <ngb-progressbar type="success" [value]="25"></ngb-progressbar>
-</p>
-<p>
-    <ngb-progressbar type="info" [value]="50"></ngb-progressbar>
-</p>
-<p>
-    <ngb-progressbar type="warning" [value]="75"></ngb-progressbar>
-</p>
-<p>
-    <ngb-progressbar type="danger" [value]="100"></ngb-progressbar>
-</p>
-
-<ngb-timepicker [(ngModel)]="time"></ngb-timepicker>
-<hr>
-<pre>Selected time: {{time | json}}</pre>
-
-<p>Simple datepicker</p>
-
-<ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next"></ngb-datepicker>
-
-<hr/>
-
-<button class="btn btn-sm btn-outline-primary" (click)="selectToday()">Select Today</button>
-<button class="btn btn-sm btn-outline-primary" (click)="dp.navigateTo()">To current month</button>
-<button class="btn btn-sm btn-outline-primary" (click)="dp.navigateTo({year: 2013, month: 2})">To Feb 2013</button>
-
-<hr/>
-
-<pre>Month: {{ date.month }}.{{ date.year }}</pre>
-<pre>Model: {{ model | json }}</pre>
+<div class="container" *ngIf="date">
+    <div class="card text-center">
+        <div class="card-header">
+            <ul class="nav nav-tabs card-header-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#c1" data-toggle="tab">Cardápio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#c2" data-toggle="tab">Usuários</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#c3" data-toggle="tab">Outras Informações</a>
+                </li>
+            </ul>
+        </div>
+        <div class="card-block tab-content clearfix" *ngFor="let r of (refeicao | async)">
+            <div class="tab-pane active" role="tabpanel" id="c1">
+                <h2>{{ r.timestamp | format:'LL' }}</h2>
+                <p>{{r.base1}}, {{r.base2}}, {{r.principal}} e {{r.guarnicao}}</p>
+                <p>Opção vegetariana: {{ r.veg }}</p>
+                <p>Salada: {{r.salada1}} e {{r.salada2}}</p>
+                <p>Suco de {{r.suco}} e {{r.sobremesa}} de sobremesa</p>
+            </div>
+            <div class="tab-pane fade" role="tabpanel" id="c2">
+                <h2>{{ r.timestamp | format:'LL' }}</h2>
+                <p>{{r.vagas}} vagas restantes</p>
+                <p>{{r.users_count}} usuários normais e {{r.usersVeg_count}} vegetarianos</p>
+                <p>{{r.queue_count}} pessoas na fila</p>
+                <p>Tempo restante para compra acaba {{r.timestamp | fromNow }}</p>
+            </div>
+            <div class="tab-pane fade" role="tabpanel" id="c3">
+                <h2>{{ r.timestamp | format:'LL' }}</h2>
+                <p>Adicionado em {{r.created_at | format:'llll'}} por {{r.created_by}}</p>
+                <p>Última modificação em {{r.updated_at | format:'llll'}} por {{r.updated_by}}</p>
+            </div>
+        </div>
+        <div class="card-block tab-content clearfix" *ngIf="(refeicao|async)?.length == 0">
+            <div class="tab-pane active" role="tabpanel" id="c1">
+                <h2>{{ date | formatDate:'LL' }}</h2>
+                <p>Não há refeições para esse dia.</p>
+            </div>
+            <div class="tab-pane fade" role="tabpanel" id="c2">
+                <h2>{{ date | formatDate:'LL' }}</h2>
+                <p>Não há refeições para esse dia.</p>
+            </div>
+            <div class="tab-pane fade" role="tabpanel" id="c3">
+                <h2>{{ date | formatDate:'LL' }}</h2>
+                <p>Não há refeições para esse dia.</p>
+            </div>
+        </div>
+    </div>
+</div>

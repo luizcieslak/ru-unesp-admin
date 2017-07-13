@@ -30,6 +30,12 @@ import { AdminService } from './providers/admin.service';
 import { RefeicaoService } from './providers/refeicao.service';
 import { UserService } from './providers/user.service';
 
+//Pipes 
+import { FormatPipe } from './pipes/format-pipe';
+import { FromNowPipe } from './pipes/from-now-pipe';
+import { KeysPipe } from './pipes/keys-pipe';
+import { FormatDatePipe } from './pipes/format-date-pipe';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -49,6 +55,10 @@ import { UserService } from './providers/user.service';
     EstatisticasComponent,
     PageNotFoundComponent,
     SaldoComponent,
+    FromNowPipe,
+    FormatPipe,
+    KeysPipe,
+    FormatDatePipe
   ],
   bootstrap: [
     AppComponent

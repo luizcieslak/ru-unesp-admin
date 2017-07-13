@@ -29,4 +29,17 @@ export class RefeicaoService {
       firebase.database().ref('refeicoes/count').transaction(count => count + 1)
     ]);
   }
+
+  refFromDatepicker(date: any): FirebaseListObservable<any> {
+    let timestamp = moment(`${date.year}-${date.month}-${date.day}`)
+      .add(11,'hours').add(30,'minutes')
+      .valueOf();
+    console.log('procurando por refeicoes com a timestamp',timestamp);
+    return this.db.list('refeicoes/',{
+      query:{
+        orderByChild: 'timestamp',
+        equalTo: timestamp
+      }
+    })
+  }
 }

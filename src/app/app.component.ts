@@ -29,7 +29,8 @@ export class AppComponent {
   }
 
   gotoDate(date: any): void {
-    console.log('date: ' + date.year + '/' + date.month + '/' + date.day)
+    console.log('date: ' + date.year + '/' + date.month + '/' + date.day);
+    this.router.navigate(['refeicoes/detail', date.year,date.month,date.day]);
   }
 
   logout(): void {
