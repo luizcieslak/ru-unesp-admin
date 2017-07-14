@@ -6,15 +6,15 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto" *ngIf="adminAuth">
-            <li><a class="nav-link" routerLink="/refeicoes/add">Adicionar Refeição</a></li>
+            <li><a class="nav-link" routerLink="/users/saldo"><i class="fa fa-plus" style="font-size:16px;" aria-hidden="true"></i> Saldo</a></li>
+            <li><a class="nav-link" routerLink="/refeicoes/add"><i class="fa fa-plus" style="font-size:16px;" aria-hidden="true"></i> Refeição</a></li>
             <li><a class="nav-link" routerLink="/refeicoes/detail">Ver Refeição:</a></li>
-            <form class="form-inline my-2 my-lg-0">
+            <form class="form-inline my-2 my-lg-0" style="padding-right: 8px">
                 <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" (ngModelChange)="gotoDate(date)">
                 <div class="input-group-addon" (click)="d.toggle()">
                     <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
                 </div>
             </form>
-            <li><a class="nav-link" routerLink="/users/saldo">Adicionar Saldo</a></li>
             <li class="nav-item"><a class="nav-link" routerLink="/refeicoes/estatisticas">Estatísticas</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right" *ngIf="adminAuth">

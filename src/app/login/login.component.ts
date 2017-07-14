@@ -6,6 +6,9 @@ import { AdminService } from '../providers/admin.service';
 
 import { EmailValidator } from '../validators/email';
 
+import * as moment from 'moment';
+moment.locale('pt-br')
+
 @Component({
   selector: 'my-app',
   templateUrl: './login.component.html'
@@ -42,8 +45,10 @@ export class LoginComponent {
   }
 
  fastLogin(): void{
+   const today = moment();
+   console.log(today.format('llll'),today.year(),today.month(),today.date());
    this._admin.signInWithEmail("admin@admin.com","ruadmin")
-      .then(() => this.router.navigate(['/refeicoes/add']))  //if login is sucessfull
+      .then(() => this.router.navigate(['/refeicoes/detail',today.year(),today.month()+1,today.date()]))  //if login is sucessfull
       .catch(error => { this.loginError = error.message }); //else, show the error.
  }
 }

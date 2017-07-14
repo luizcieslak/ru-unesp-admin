@@ -35,6 +35,7 @@ import { FormatPipe } from './pipes/format-pipe';
 import { FromNowPipe } from './pipes/from-now-pipe';
 import { KeysPipe } from './pipes/keys-pipe';
 import { FormatDatePipe } from './pipes/format-date-pipe';
+import { HomepageComponent } from './homepage/homepage.component';
 
 @NgModule({
   imports: [
@@ -58,7 +59,8 @@ import { FormatDatePipe } from './pipes/format-date-pipe';
     FromNowPipe,
     FormatPipe,
     KeysPipe,
-    FormatDatePipe
+    FormatDatePipe,
+    HomepageComponent
   ],
   bootstrap: [
     AppComponent
