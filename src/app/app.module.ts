@@ -15,11 +15,14 @@ import { environment } from '../environments/environment';
 
 //Components
 import { LoginComponent } from './login/login.component';
-import { CardapioComponent } from './cardapio/cardapio.component';
-import { CardapioDetailComponent } from './cardapio-detail/cardapio-detail.component';
-import { EstatisticasComponent } from './estatisticas/estatisticas.component';
 import { PageNotFoundComponent } from './not-found/not-found.component';
-import { SaldoComponent } from './saldo/saldo.component';
+import { HomepageComponent } from './homepage/homepage.component';
+
+//Users
+import { UsersModule } from './users/users.module';
+
+//Refeicoes
+import { RefeicoesModule } from './refeicoes/refeicoes.module';
 
 //Routes
 import { AppRoutingModule } from './routes/app-routing.module';
@@ -31,11 +34,7 @@ import { RefeicaoService } from './providers/refeicao.service';
 import { UserService } from './providers/user.service';
 
 //Pipes 
-import { FormatPipe } from './pipes/format-pipe';
-import { FromNowPipe } from './pipes/from-now-pipe';
-import { KeysPipe } from './pipes/keys-pipe';
-import { FormatDatePipe } from './pipes/format-date-pipe';
-import { HomepageComponent } from './homepage/homepage.component';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   imports: [
@@ -46,20 +45,15 @@ import { HomepageComponent } from './homepage/homepage.component';
     NgbModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule, // imports firebase/database, only needed for database features
-    AngularFireAuthModule // imports firebase/auth, only needed for auth features
+    AngularFireAuthModule, // imports firebase/auth, only needed for auth features
+    UsersModule,
+    RefeicoesModule,
+    PipesModule
   ],
   declarations: [
     AppComponent,
     LoginComponent,
-    CardapioComponent,
-    CardapioDetailComponent,
-    EstatisticasComponent,
     PageNotFoundComponent,
-    SaldoComponent,
-    FromNowPipe,
-    FormatPipe,
-    KeysPipe,
-    FormatDatePipe,
     HomepageComponent
   ],
   bootstrap: [

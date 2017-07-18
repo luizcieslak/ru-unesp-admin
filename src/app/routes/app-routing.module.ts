@@ -2,11 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { LoginComponent } from '../login/login.component';
-import { CardapioComponent } from '../cardapio/cardapio.component';
-import { CardapioDetailComponent } from '../cardapio-detail/cardapio-detail.component';
-import { EstatisticasComponent } from '../estatisticas/estatisticas.component';
-import { SaldoComponent } from '../saldo/saldo.component';
 import { HomepageComponent } from '../homepage/homepage.component';
+
+import { NewUserComponent } from '../users/new-user/new-user.component'
+import { SaldoComponent } from '../users/saldo/saldo.component';
+
+import { NewRefeicaoComponent } from '../refeicoes/new-refeicao/new-refeicao.component';
+import { EditRefeicaoComponent } from '../refeicoes/edit-refeicao/edit-refeicao.component';
+import { RefeicaoDetailComponent } from '../refeicoes/refeicao-detail/refeicao-detail.component';
+import { EstatisticasComponent } from '../refeicoes/estatisticas/estatisticas.component';
 
 import { PageNotFoundComponent } from '../not-found/not-found.component';
 
@@ -17,9 +21,9 @@ const routes: Routes = [
     path: 'refeicoes',
     canActivate: [AuthGuard],
     children: [
-      { path: 'new', component: CardapioComponent },
-      { path: 'detail/:year/:month/:day', component: CardapioDetailComponent },
-      { path: 'detail', component: CardapioDetailComponent },
+      { path: 'new', component: NewRefeicaoComponent },
+      { path: 'detail/:year/:month/:day', component: RefeicaoDetailComponent },
+      { path: 'detail', component: RefeicaoDetailComponent },
       { path: 'estatisticas', component: EstatisticasComponent }
     ]
   },
@@ -28,6 +32,7 @@ const routes: Routes = [
     path: 'users',
     canActivate: [AuthGuard],
     children: [
+      { path: 'new', component: NewUserComponent },
       { path: 'saldo', component: SaldoComponent }
     ]
   },

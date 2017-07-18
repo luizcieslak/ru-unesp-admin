@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup} from '@angular/forms';
 
-import { UserService } from '../providers/user.service';
+import { UserService } from '../../providers/user.service';
 
 @Component({
   selector: 'app-saldo',

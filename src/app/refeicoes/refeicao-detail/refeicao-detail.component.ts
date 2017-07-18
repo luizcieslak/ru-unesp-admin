@@ -6,13 +6,13 @@ import { FirebaseListObservable } from 'angularfire2/database';
 
 
 //providers
-import { RefeicaoService } from '../providers/refeicao.service';
+import { RefeicaoService } from '../../providers/refeicao.service';
 
 @Component({
   selector: 'my-app',
-  templateUrl: './cardapio-detail.component.html'
+  templateUrl: './refeicao-detail.component.html'
 })
-export class CardapioDetailComponent implements OnInit {
+export class RefeicaoDetailComponent implements OnInit {
 
   date: { year: number, month: number, day: number };
 

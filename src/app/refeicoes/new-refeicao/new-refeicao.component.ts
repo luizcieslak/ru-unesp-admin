@@ -5,17 +5,18 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { NgbDatepickerConfig, NgbDateStruct, NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
 
 //Providers
-import { RefeicaoService } from '../providers/refeicao.service';
+import { RefeicaoService } from '../../providers/refeicao.service';
 
 //Moment lib
 import * as moment from 'moment';
 moment.locale('pt-br');
 
 @Component({
-  selector: 'my-app',
-  templateUrl: './cardapio.component.html'
+  selector: 'app-new-refeicao',
+  templateUrl: './new-refeicao.component.html',
+  styleUrls: ['./new-refeicao.component.css']
 })
-export class CardapioComponent {
+export class NewRefeicaoComponent {
   //A FormGroup is a collection of FormControls, which is inputed in html.
   private addForm: FormGroup;
 
