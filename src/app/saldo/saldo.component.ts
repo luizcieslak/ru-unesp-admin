@@ -35,7 +35,7 @@ export class SaldoComponent implements OnInit {
     this.submitAttempt = true;
     if (this.saldoForm.valid) {
       this._user.addSaldo(this.saldoForm.value.email, this.saldoForm.value.amount)
-        .then(_ => console.log('saldo added'))
+        .then(_ => alert('Valor adicionado com sucesso.'))
         .catch(reason => alert(reason));
     }
   }

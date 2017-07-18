@@ -28,6 +28,7 @@ export class UserService {
             firebase.database().ref(`users/${snapshots[0].$key}/saldo`).transaction(saldo => saldo + amount),
             firebase.database().ref(`users/${snapshots[0].$key}/saldo_history`).push({
               type: 'recarga',
+              description: `Adicionou ${amount} tíquetes de refeição`,
               admin: this._admin.email,
               timestamp: moment().valueOf()
             })

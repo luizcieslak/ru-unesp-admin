@@ -90,7 +90,7 @@ export class AppComponent {
 
   logout(): void {
     this._admin.signOut()
-      .then(_ => this.router.navigate(['/login']))
+      .then(_ => this.router.navigate(['']))
       .catch(reason => console.log('error in AppComponent#logout', reason));
   }
 }

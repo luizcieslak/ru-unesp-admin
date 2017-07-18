@@ -17,7 +17,7 @@ const routes: Routes = [
     path: 'refeicoes',
     canActivate: [AuthGuard],
     children: [
-      { path: 'add', component: CardapioComponent },
+      { path: 'new', component: CardapioComponent },
       { path: 'detail/:year/:month/:day', component: CardapioDetailComponent },
       { path: 'detail', component: CardapioDetailComponent },
       { path: 'estatisticas', component: EstatisticasComponent }

@@ -22,6 +22,7 @@ export class RefeicaoService {
     refeicao['vagas'] = 350;
     refeicao['sold_out'] = false;
     refeicao['queue_count'] = 0;
+    refeicao['queue_released'] = 0;
     refeicao['users_count'] = 0;
     refeicao['usersVeg_count'] = 0;
     return Promise.all([
