@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Title }     from '@angular/platform-browser';
 
 import { UserService } from '../../providers/user.service';
 
@@ -23,7 +24,11 @@ export class NewUserComponent implements OnInit {
   //String variable that stores the server error in a failed signin.
   private formError: string;
 
-  constructor(private formBuilder: FormBuilder, private _user: UserService) {
+  constructor(private titleService: Title, private formBuilder: FormBuilder, 
+    private _user: UserService) {
+    //Mudar o título do documento
+    titleService.setTitle('ru-admin | Novo usuário');
+    
     //Create FormBuilder with your inputs and their Validators.
     this.userForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],

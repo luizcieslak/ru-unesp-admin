@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title }     from '@angular/platform-browser';
+
 import { Subscription } from 'rxjs';
 import { FirebaseListObservable } from 'angularfire2/database';
 
@@ -20,8 +22,11 @@ export class RefeicaoDetailComponent implements OnInit {
 
   refeicao: FirebaseListObservable<any>
 
-  constructor(private route: ActivatedRoute, private router: Router,
-  private _refeicao: RefeicaoService) { }
+  constructor(private titleService: Title, private route: ActivatedRoute, private router: Router,
+  private _refeicao: RefeicaoService) { 
+    //Mudar o título do documento
+    titleService.setTitle('ru-admin | Detalhes da refeição');
+  }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {

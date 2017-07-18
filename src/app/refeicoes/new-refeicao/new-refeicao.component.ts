@@ -1,5 +1,6 @@
 import { Component, Injectable } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Title }     from '@angular/platform-browser';
 
 //To config NgbDatepicker
 import { NgbDatepickerConfig, NgbDateStruct, NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
@@ -28,7 +29,11 @@ export class NewRefeicaoComponent {
 
   date: any;
 
-  constructor(private formBuilder: FormBuilder, private _refeicao: RefeicaoService) {
+  constructor(private titleService: Title, private formBuilder: FormBuilder, 
+    private _refeicao: RefeicaoService) {
+    //Mudar o título do documento
+    titleService.setTitle('ru-admin | Nova refeição');
+    
     //Create FormBuilder with your inputs and their Validators.
     this.addForm = this.formBuilder.group({
       date: ['', Validators.required],

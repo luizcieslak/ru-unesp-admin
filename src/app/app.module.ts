@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -63,7 +63,8 @@ import { PipesModule } from './pipes/pipes.module';
     AuthGuard,
     AdminService,
     RefeicaoService,
-    UserService
+    UserService,
+    Title
   ]
 })
 export class AppModule { }

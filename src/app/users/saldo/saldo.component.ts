@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Validators, FormBuilder, FormGroup} from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
+import { Title }     from '@angular/platform-browser';
 
 import { UserService } from '../../providers/user.service';
 
@@ -20,7 +21,11 @@ export class SaldoComponent implements OnInit {
   //String variable that stores the server error in a failed signin.
   private formError: string;
 
-  constructor(private formBuilder: FormBuilder, private _user: UserService) {
+  constructor(private titleService: Title, private formBuilder: FormBuilder, 
+    private _user: UserService) {
+    //Mudar o título do documento
+    titleService.setTitle('ru-admin | Adicionar saldo');
+
     //Create FormBuilder with your inputs and their Validators.
     this.saldoForm = this.formBuilder.group({
       email: ['', Validators.required],

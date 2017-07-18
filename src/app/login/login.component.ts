@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Router }                 from '@angular/router';
+import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
+
 
 import { AdminService } from '../providers/admin.service';
 
@@ -24,31 +26,33 @@ export class LoginComponent {
   //String variable that stores the server error in a failed signin.
   private loginError: string;
 
-  constructor(private formBuilder: FormBuilder, private _admin: AdminService,
-    private router: Router) {
-      //Create FormBuilder with your inputs and their Validators.
-      this.loginForm = this.formBuilder.group({
-        email: ['',  Validators.compose([Validators.required, EmailValidator.isValid]) ],
-        password: ['', Validators.required]
-      });
+  constructor(private titleService: Title, private formBuilder: FormBuilder,
+    private _admin: AdminService, private router: Router) {
+    //Mudar o título do documento
+    titleService.setTitle('ru-admin | Login');
+    //Create FormBuilder with your inputs and their Validators.
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
+      password: ['', Validators.required]
+    });
   }
 
- login(): void {
+  login(): void {
     this.submitAttempt = true;
-    if(this.loginForm.valid){
-      this._admin.signInWithEmail(this.loginForm.value.email,this.loginForm.value.password)
+    if (this.loginForm.valid) {
+      this._admin.signInWithEmail(this.loginForm.value.email, this.loginForm.value.password)
         .then(() => this.router.navigate(['/refeicoes/add']))  //if login is sucessfull
         .catch(error => { this.loginError = error.message }); //else, show the error.
-    }else{
+    } else {
       console.log("loginForm is not valid.");
     }
   }
 
- fastLogin(): void{
-   const today = moment();
-   console.log(today.format('llll'),today.year(),today.month(),today.date());
-   this._admin.signInWithEmail("admin@admin.com","ruadmin")
-      .then(() => this.router.navigate(['/refeicoes/detail',today.year(),today.month()+1,today.date()]))  //if login is sucessfull
+  fastLogin(): void {
+    const today = moment();
+    console.log(today.format('llll'), today.year(), today.month(), today.date());
+    this._admin.signInWithEmail("admin@admin.com", "ruadmin")
+      .then(() => this.router.navigate(['/refeicoes/detail', today.year(), today.month() + 1, today.date()]))  //if login is sucessfull
       .catch(error => { this.loginError = error.message }); //else, show the error.
- }
+  }
 }

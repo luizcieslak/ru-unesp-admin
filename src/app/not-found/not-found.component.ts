@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   template: `
@@ -8,4 +9,9 @@ import { Component } from '@angular/core';
     </div>
   `
 })
-export class PageNotFoundComponent {}
+export class PageNotFoundComponent {
+  constructor(private titleService: Title) {
+    //Mudar o título do documento
+    titleService.setTitle('ru-admin | 404');
+  }
+}
