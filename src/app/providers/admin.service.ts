@@ -5,6 +5,9 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
 //import firebase namespace for functions that aren't in AngularFire2
 import * as firebase from 'firebase/app';
 
+//ENV variables
+import { environment } from '../../environments/environment';
+
 @Injectable()
 export class AdminService {
 
@@ -45,6 +48,13 @@ export class AdminService {
   }
 
   createUser(email: string, password: string): firebase.Promise<any>{
-    return this._auth.auth.createUserWithEmailAndPassword(email, password);
+    let secondaryApp = firebase.initializeApp(environment.firebase,"Secondary");
+    return secondaryApp.auth().createUserWithEmailAndPassword(email, password)
+      .then(response => {
+        const userInfo = response;
+        secondaryApp.auth().signOut();
+        secondaryApp.delete();
+        return userInfo;
+      });
   }
 }
