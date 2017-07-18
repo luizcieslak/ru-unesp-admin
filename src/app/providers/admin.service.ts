@@ -43,4 +43,8 @@ export class AdminService {
   adminObservable(): FirebaseObjectObservable<any>{
     return this.db.object(`admins/${this.uid}`);
   }
+
+  createUser(email: string, password: string): firebase.Promise<any>{
+    return this._auth.auth.createUserWithEmailAndPassword(email, password);
+  }
 }

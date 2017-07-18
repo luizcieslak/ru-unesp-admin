@@ -1,3 +1,80 @@
-<p>
-  new-user works!
-</p>
+<div class="container">
+    <form class="form-horizontal" [formGroup]="userForm" novalidate>
+        <div class="form-group row">
+            <label for="name" class="col-2 col-form-label">Nome</label>
+            <div class="col-8">
+                <input class="form-control" type="text" formControlName="name">
+                <p *ngIf="submitAttempt && userForm.controls.name.hasError('required')" style="color: #ea6153;">
+                    Nome Obrigatório.
+                </p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="ra" class="col-2 col-form-label">RA</label>
+            <div class="col-8">
+                <input class="form-control" type="text" formControlName="ra">
+                <p *ngIf="submitAttempt && userForm.controls.ra.hasError('required')" style="color: #ea6153;" padding>
+                    RA Obrigatório.
+                </p>
+                <p *ngIf="submitAttempt && userForm.controls.ra.hasError('invalidRA')" style="color: #ea6153;" padding>
+                    RA Inválido.
+                </p>
+                <p *ngIf="submitAttempt && userForm.controls.ra.hasError('maxlength')" style="color: #ea6153;" padding>
+                    RA precisa conter no máximo 9 caracteres.
+                </p>
+                <p *ngIf="submitAttempt && userForm.controls.ra.hasError('minlength')" style="color: #ea6153;" padding>
+                    RA precisa conter no mínimo 8 caracteres.
+                </p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-2 col-form-label">Email</label>
+            <div class="col-8">
+                <input class="form-control" type="text" formControlName="email">
+                <p *ngIf="submitAttempt && userForm.controls.email.hasError('required')" style="color: #ea6153;" padding>
+                    Email Obrigatório.
+                </p>
+                <p *ngIf="submitAttempt && userForm.controls.email.hasError('invalidEmail')" style="color: #ea6153;" padding>
+                    Email Inválido.
+                </p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-2 col-form-label">Senha</label>
+            <div class="col-8">
+                <input class="form-control" type="password" formControlName="password">
+                <p *ngIf="submitAttempt && userForm.controls.password.hasError('required')" style="color: #ea6153;" padding>
+                    Senha Obrigatória.
+                </p>
+                <p *ngIf="submitAttempt && userForm.controls.password.hasError('minlength')" style="color: #ea6153;" padding>
+                    Senha precisa conter pelo menos 6 caracteres.
+                </p>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="confirmPass" class="col-2 col-form-label">Confirmar Senha</label>
+            <div class="col-8">
+                <input class="form-control" type="password" formControlName="confirmPass">
+                <p *ngIf="submitAttempt && userForm.hasError('mismatchedPasswords')" style="color: #ea6153;" padding>
+                    As senhas não correspondem.
+                </p>
+            </div>
+        </div>
+        <div class="form-check">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" formControlName="veg">
+              Vegetariano?
+          </label>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <p *ngIf="submitAttempt && formError" style="color: #ea6153;">{{ formError }}</p>
+                <button type="submit" class="btn btn-default" (click)="register()">Registrar</button>
+                <button class="btn btn-default" (click)="randomUser()">random user</button>
+            </div>
+        </div>
+    </form>
+
+
+    <pre>{{ userForm.value | json }}</pre>
+</div>
