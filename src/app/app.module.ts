@@ -35,6 +35,7 @@ import { UserService } from './providers/user.service';
 
 //Pipes 
 import { PipesModule } from './pipes/pipes.module';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   imports: [
@@ -54,7 +55,8 @@ import { PipesModule } from './pipes/pipes.module';
     AppComponent,
     LoginComponent,
     PageNotFoundComponent,
-    HomepageComponent
+    HomepageComponent,
+    LoadingComponent
   ],
   bootstrap: [
     AppComponent
