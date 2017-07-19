@@ -1,9 +1,9 @@
 import { Component, Injectable } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Title }     from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 
 //To config NgbDatepicker
-import { NgbDatepickerConfig, NgbDateStruct, NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerConfig, NgbDateStruct, NgbDatepickerI18n, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 //Providers
 import { RefeicaoService } from '../../providers/refeicao.service';
@@ -29,11 +29,11 @@ export class NewRefeicaoComponent {
 
   date: any;
 
-  constructor(private titleService: Title, private formBuilder: FormBuilder, 
-    private _refeicao: RefeicaoService) {
+  constructor(private titleService: Title, private formBuilder: FormBuilder,
+    private _refeicao: RefeicaoService, private modalService: NgbModal) {
     //Mudar o título do documento
     titleService.setTitle('ru-admin | Nova refeição');
-    
+
     //Create FormBuilder with your inputs and their Validators.
     this.addForm = this.formBuilder.group({
       date: ['', Validators.required],
@@ -48,6 +48,33 @@ export class NewRefeicaoComponent {
       sobremesa: ['', Validators.required],
       suco: ['', Validators.required]
     });
+  }
+
+  demo(){
+    this.addForm.patchValue({
+      timestamp: moment().valueOf(),
+      base1: '1',
+      base2: '1',
+      principal: '1',
+      veg: '1',
+      guarnicao: '1',
+      salada1: '1',
+      salada2: '1',
+      sobremesa: '1',
+      suco: '1'
+    })
+  }
+
+  open(content) {
+    this.modalService.open(content);
+  }
+
+  modalConfirm(modalContent: any) {
+    this.modalService.open(modalContent).result
+      .then(result => {
+        result? this.register() : console.log('operation cancelled');
+      })
+      .catch(reason => console.log('error in modal result', reason));
   }
 
   register(): void {
@@ -70,7 +97,7 @@ export class NewRefeicaoComponent {
     if (this.date) {
       //transform this.date to Moment
       const dateMoment = moment(`${this.date.year}-${this.date.month}-${this.date.day}`)
-        .add(11,'hours').add(30,'minutes')
+        .add(11, 'hours').add(30, 'minutes')
         .utc();
       //add 'timestamp' value in form
       this.addForm.patchValue({

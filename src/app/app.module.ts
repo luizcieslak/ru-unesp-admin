@@ -67,6 +67,9 @@ import { LoadingComponent } from './loading/loading.component';
     RefeicaoService,
     UserService,
     Title
+  ],
+  entryComponents:[
+    LoadingComponent
   ]
 })
 export class AppModule { }
