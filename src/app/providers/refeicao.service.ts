@@ -31,6 +31,10 @@ export class RefeicaoService {
     ]);
   }
 
+  edit(key: string, formValues: any): firebase.Promise<any>{   
+    return this.db.object(`refeicoes/${key}`).update(formValues);
+  }
+
   refFromDatepicker(date: any): FirebaseListObservable<any> {
     let timestamp = moment(`${date.year}-${date.month}-${date.day}`)
       .add(11,'hours').add(30,'minutes')

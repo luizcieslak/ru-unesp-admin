@@ -24,6 +24,8 @@ const routes: Routes = [
       { path: 'new', component: NewRefeicaoComponent },
       { path: 'detail/:year/:month/:day', component: RefeicaoDetailComponent },
       { path: 'detail', component: RefeicaoDetailComponent },
+      { path: 'edit/:year/:month/:day', component: EditRefeicaoComponent },
+      { path: 'edit', component: EditRefeicaoComponent },
       { path: 'estatisticas', component: EstatisticasComponent }
     ]
   },

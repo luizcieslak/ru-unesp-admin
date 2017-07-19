@@ -20,7 +20,7 @@ export class RefeicaoDetailComponent implements OnInit {
 
   sub: Subscription;
 
-  refeicao: FirebaseListObservable<any>
+  refeicao: FirebaseListObservable<any>;
 
   constructor(private titleService: Title, private route: ActivatedRoute, private router: Router,
   private _refeicao: RefeicaoService) { 
@@ -36,7 +36,9 @@ export class RefeicaoDetailComponent implements OnInit {
           month: +params['month'],
           day: +params['day']
         }
-        this.gotoDate(this.date);
+        this.getRefeicao(this.date);
+      }else{
+        this.date = undefined;
       }
     })
   }
@@ -45,11 +47,15 @@ export class RefeicaoDetailComponent implements OnInit {
     this.sub.unsubscribe();
   }
 
-  gotoDate(date: any) {
+  getRefeicao(date: any) {
     //retrieve info from db
     this.refeicao = this._refeicao.refFromDatepicker(date);
     this.refeicao.take(1).subscribe(refeicao => {
       console.log(refeicao.length);
     });
+  }
+
+  gotoDate(date: any){
+    this.router.navigate(['refeicoes/detail',this.date.year,this.date.month,this.date.day]);
   }
 }
