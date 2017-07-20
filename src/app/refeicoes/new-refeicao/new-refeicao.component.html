@@ -71,7 +71,6 @@
                 <p *ngIf="submitAttempt && formError" style="color: #ea6153;">{{ formError }}</p>
                 <button type="submit" class="btn btn-default" (click)="modalConfirm(modalContent)">Registrar</button>
                 <button type="submit" class="btn btn-default" (click)="demo()">Demo</button>
-                <button class="btn btn-lg btn-outline-primary" (click)="open(modalContent)">Launch demo modal</button>
             </div>
         </div>
     </form>
@@ -83,15 +82,22 @@
     <div class="modal-header">
         <h4 class="modal-title">Confirmar operação</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
     <div class="modal-body text-center">
-        <h2>{{ addForm.value.timestamp | format:'LL' }}</h2>
-        <p>{{addForm.value.base1}}, {{addForm.value.base2}}, {{addForm.value.principal}} e {{addForm.value.guarnicao}}</p>
-        <p>Opção vegetariana: {{ addForm.value.veg }}</p>
-        <p>Salada: {{addForm.value.salada1}} e {{addForm.value.salada2}}</p>
-        <p>Suco de {{addForm.value.suco}} e {{addForm.value.sobremesa}} de sobremesa</p>
+        <div *ngIf="!modalError">
+            <h2>{{ addForm.value.timestamp | format:'LL' }}</h2>
+            <p>{{addForm.value.base1}}, {{addForm.value.base2}}, {{addForm.value.principal}} e {{addForm.value.guarnicao}}</p>
+            <p>Opção vegetariana: {{ addForm.value.veg }}</p>
+            <p>Salada: {{addForm.value.salada1}} e {{addForm.value.salada2}}</p>
+            <p>Suco de {{addForm.value.suco}} e {{addForm.value.sobremesa}} de sobremesa</p>
+        </div>
+
+        <div *ngIf="modalError">
+            <p>Erro: {{ modalError }}</p>
+            <button class="btn btn-default" (click)="refeicaoDetails()">Ver Refeição</button>
+        </div>
     </div>
     <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="c(false)">Cancelar</button>

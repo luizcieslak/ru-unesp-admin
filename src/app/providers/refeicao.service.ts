@@ -47,4 +47,18 @@ export class RefeicaoService {
       }
     })
   }
+
+  exists(timestamp: number): firebase.Promise<any>{
+    return new Promise((resolve,reject)=>{
+      firebase.database().ref('refeicoes/')
+      .orderByChild('timestamp')
+      .equalTo(timestamp)
+      .once('value')
+      .then(snap => {
+        if (snap.val() !== null) resolve(true);
+        else resolve(false)
+      })
+      .catch(reason => reject(reason));
+    })
+  }
 }

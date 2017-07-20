@@ -1,6 +1,7 @@
 import { Component, Injectable } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 
 //To config NgbDatepicker
 import { NgbDatepickerConfig, NgbDateStruct, NgbDatepickerI18n, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
@@ -27,10 +28,13 @@ export class NewRefeicaoComponent {
   //String variable that stores the server error in a failed signin.
   private formError: string;
 
-  date: any;
+  private modalError: string;
+
+  date: { year: number, month: number, day: number };
 
   constructor(private titleService: Title, private formBuilder: FormBuilder,
-    private _refeicao: RefeicaoService, private modalService: NgbModal) {
+    private _refeicao: RefeicaoService, private modalService: NgbModal,
+    private router: Router) {
     //Mudar o título do documento
     titleService.setTitle('ru-admin | Nova refeição');
 
@@ -50,7 +54,7 @@ export class NewRefeicaoComponent {
     });
   }
 
-  demo(){
+  demo() {
     this.addForm.patchValue({
       timestamp: moment().valueOf(),
       base1: '1',
@@ -65,32 +69,44 @@ export class NewRefeicaoComponent {
     })
   }
 
-  open(content) {
-    this.modalService.open(content);
-  }
-
   modalConfirm(modalContent: any) {
-    this.modalService.open(modalContent).result
-      .then(result => {
-        result? this.register() : console.log('operation cancelled');
-      })
-      .catch(reason => console.log('error in modal result', reason));
+    console.log('modalConfirm');
+    this.submitAttempt = true;
+    //verify if there is a refeicao in this date
+    this._refeicao.exists(this.addForm.value.timestamp)
+      .then(exists => {
+        console.log('exists#then', exists);
+        if (this.addForm.valid) {
+          if (exists) {
+            this.modalService.open(modalContent);
+            this.modalError = "Já existe uma refeição para esta data.";
+          } else {
+            this.modalService.open(modalContent).result
+              .then(result => {
+                if (result) {
+                  this.register();
+                } else {
+                  console.log('operation cancelled');
+                }
+              })
+              .catch(reason => console.log('error in modal result', reason));
+          }
+        } else {
+          this.formError = 'Todos os campos são obrigatórios.';
+        }
+      }).catch(reason => console.log('error in RefeicaoService#exists', reason));
   }
 
   register(): void {
-    this.submitAttempt = true;
-    if (this.addForm.valid) {
-      //remove 'date' value in form
-      this.addForm.patchValue({
-        date: null
-      });
-      //send to database
-      this._refeicao.add(this.addForm.value)
-        .then(_ => alert('Refeição adicionada no banco de dados'))
-        .catch(reason => console.log('error in register', reason))
-    } else {
-      this.formError = 'Todos os campos são obrigatórios.'
-    }
+    //remove 'date' value in form
+    this.addForm.patchValue({
+      date: null
+    });
+
+    //send to database
+    this._refeicao.add(this.addForm.value)
+      .then(_ => alert('Refeição adicionada no banco de dados'))
+      .catch(reason => console.log('error in register', reason));
   }
 
   datePicker(): void {
@@ -105,5 +121,9 @@ export class NewRefeicaoComponent {
       });
       //console.log(dateMoment, moment(dateMoment).format('LL'), moment(dateMoment).valueOf());
     }
+  }
+
+  refeicaoDetails(): void {
+    this.router.navigate(['refeicoes/detail', this.date.year, this.date.month, this.date.day]);
   }
 }
