@@ -50,7 +50,13 @@ export class NewUserComponent implements OnInit {
   }
 
   modalConfirm(modalContent: any) {
+    //reseting variables
+    this.modalError = '';
+    this.exists = false;
+    //form submitted
     this.submitAttempt = true;
+    console.log(this.userForm.value.ra);
+    
     //verify if there is a refeicao in this date
     this._user.exists(this.userForm.value.ra)
       .then(result => {

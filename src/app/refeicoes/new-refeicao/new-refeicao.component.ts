@@ -72,6 +72,10 @@ export class NewRefeicaoComponent {
   }
 
   modalConfirm(modalContent: any) {
+    //reseting variables
+    this.modalError = '';
+    this.exists = false;
+    //form submitted
     this.submitAttempt = true;
     //verify if there is a refeicao in this date
     this._refeicao.exists(this.addForm.value.timestamp)
