@@ -4,7 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 //To config NgbDatepicker
-import { NgbDatepickerConfig, NgbDateStruct, NgbDatepickerI18n, NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDatepickerConfig, NgbDateStruct, NgbDatepickerI18n, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 //Providers
 import { RefeicaoService } from '../../providers/refeicao.service';
@@ -31,6 +31,8 @@ export class NewRefeicaoComponent {
   private modalError: string;
 
   date: { year: number, month: number, day: number };
+
+  exists: boolean = false;
 
   constructor(private titleService: Title, private formBuilder: FormBuilder,
     private _refeicao: RefeicaoService, private modalService: NgbModal,
@@ -70,12 +72,11 @@ export class NewRefeicaoComponent {
   }
 
   modalConfirm(modalContent: any) {
-    console.log('modalConfirm');
     this.submitAttempt = true;
     //verify if there is a refeicao in this date
     this._refeicao.exists(this.addForm.value.timestamp)
       .then(exists => {
-        console.log('exists#then', exists);
+        this.exists = exists;
         if (this.addForm.valid) {
           if (exists) {
             this.modalService.open(modalContent);
