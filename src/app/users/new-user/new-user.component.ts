@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
-import { Title }     from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
+
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { UserService } from '../../providers/user.service';
 
@@ -24,11 +26,15 @@ export class NewUserComponent implements OnInit {
   //String variable that stores the server error in a failed signin.
   private formError: string;
 
-  constructor(private titleService: Title, private formBuilder: FormBuilder, 
-    private _user: UserService) {
+  private exists: boolean = false;
+  private user = {};
+  private modalError: string;
+
+  constructor(private titleService: Title, private formBuilder: FormBuilder,
+    private _user: UserService, private modalService: NgbModal) {
     //Mudar o título do documento
     titleService.setTitle('ru-admin | Novo usuário');
-    
+
     //Create FormBuilder with your inputs and their Validators.
     this.userForm = this.formBuilder.group({
       email: ['', Validators.compose([Validators.required, EmailValidator.isValid])],
@@ -43,10 +49,39 @@ export class NewUserComponent implements OnInit {
   ngOnInit() {
   }
 
+  modalConfirm(modalContent: any) {
+    this.submitAttempt = true;
+    //verify if there is a refeicao in this date
+    this._user.exists(this.userForm.value.ra)
+      .then(result => {
+        console.log('result', result);
+        this.exists = result.exists;
+        if (this.userForm.valid) {
+          if (result.exists) {
+            this.modalService.open(modalContent);
+            this.modalError = "Já existe um usuário com este RA.";
+            this.user = result.snapshot[Object.keys(result.snapshot)[0]];
+          } else {
+            this.modalService.open(modalContent).result
+              .then(result => {
+                if (result) {
+                  this.register();
+                } else {
+                  console.log('operation cancelled');
+                }
+              })
+              .catch(reason => console.log('error in modal result', reason));
+          }
+        } else {
+          this.formError = 'Todos os campos são obrigatórios.';
+        }
+      }).catch(reason => console.log('error in UserService#exists', reason));
+  }
+
   register(): void {
     this.submitAttempt = true;
     if (this.userForm.valid) {
-      if(this.userForm.value['veg'] == ''){
+      if (this.userForm.value['veg'] == '') {
         this.userForm.patchValue({
           veg: true
         });
@@ -58,13 +93,13 @@ export class NewUserComponent implements OnInit {
     }
   }
 
-  randomUser():void {
-    const password = `${Math.floor(Math.random()*1000000)}`;
+  randomUser(): void {
+    const password = `${Math.floor(Math.random() * 1000000)}`;
 
     this.userForm.setValue({
-      name: `${Math.floor(Math.random()*1000)}`,
-      email: `${Math.floor(Math.random()*1000)}@${Math.floor(Math.random()*1000)}.com`,
-      ra: `${Math.floor(Math.random()*1000000000)}`,
+      name: `${Math.floor(Math.random() * 1000)}`,
+      email: `${Math.floor(Math.random() * 1000)}@${Math.floor(Math.random() * 1000)}.com`,
+      ra: `${Math.floor(Math.random() * 1000000000)}`,
       password: password,
       confirmPass: password,
       veg: true

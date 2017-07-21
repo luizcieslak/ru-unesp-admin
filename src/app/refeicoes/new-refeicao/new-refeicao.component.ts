@@ -30,9 +30,9 @@ export class NewRefeicaoComponent {
 
   private modalError: string;
 
-  date: { year: number, month: number, day: number };
+  private date: { year: number, month: number, day: number };
 
-  exists: boolean = false;
+  private exists: boolean = false;
 
   constructor(private titleService: Title, private formBuilder: FormBuilder,
     private _refeicao: RefeicaoService, private modalService: NgbModal,

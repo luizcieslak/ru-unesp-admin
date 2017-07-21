@@ -40,13 +40,13 @@ export class UserService {
     })
   }
 
-  newUser(user: any): firebase.Promise<any>{
+  newUser(user: any): firebase.Promise<any> {
     return this._admin.createUser(user.email, user.password)
       .then(response => {
         console.log(response);
         return this.postSignup(response.uid, user);
       })
-      .catch(reason => console.log('error in UserService#newUser',reason));
+      .catch(reason => console.log('error in UserService#newUser', reason));
   }
 
   /**
@@ -65,6 +65,20 @@ export class UserService {
       created_at: firebase.database.ServerValue.TIMESTAMP,
       updated_at: firebase.database.ServerValue.TIMESTAMP
     }));
+  }
+
+  exists(ra: string): firebase.Promise<any> {
+    return new Promise((resolve, reject) => {
+      firebase.database().ref('users/')
+        .orderByChild('ra')
+        .equalTo(ra)
+        .once('value')
+        .then(snap => {
+          if (snap.val() !== null) resolve({ exists: true, snapshot: snap.val() });
+          else resolve({ exists: false, snapshot: null });
+        })
+        .catch(reason => reject(reason));
+    })
   }
 
 }

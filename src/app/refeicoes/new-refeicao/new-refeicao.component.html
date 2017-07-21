@@ -80,7 +80,7 @@
 
 <ng-template #modalContent let-c="close" let-d="dismiss">
     <div class="modal-header">
-        <h4 class="modal-title">Confirmar operação</h4>
+        <h4 class="modal-title">Confirmar operação - Adicionar refeição</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
             <span aria-hidden="true">&times;</span>
         </button>
@@ -96,7 +96,7 @@
 
         <div *ngIf="modalError">
             <p>Erro: {{ modalError }}</p>
-            <button class="btn btn-default" (click)="refeicaoDetails()">Ver Refeição</button>
+            <button class="btn btn-secondary" (click)="refeicaoDetails()">Ver Refeição</button>
         </div>
     </div>
     <div class="modal-footer">
