@@ -4,6 +4,8 @@ import { Title }     from '@angular/platform-browser';
 
 import { UserService } from '../../providers/user.service';
 
+import { RaValidator } from '../../validators/ra';
+
 @Component({
   selector: 'app-saldo',
   templateUrl: './saldo.component.html',
@@ -28,7 +30,7 @@ export class SaldoComponent implements OnInit {
 
     //Create FormBuilder with your inputs and their Validators.
     this.saldoForm = this.formBuilder.group({
-      ra: ['', Validators.required],
+      ra: ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.maxLength(9), RaValidator.isValid,])],
       amount: ['', Validators.required]
     });
   }
