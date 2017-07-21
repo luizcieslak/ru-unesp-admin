@@ -14,13 +14,13 @@ export class UserService {
 
   constructor(private db: AngularFireDatabase, private _admin: AdminService) { }
 
-  addSaldo(email: string, amount: number): firebase.Promise<any> {
+  addSaldo(ra: string, amount: number): firebase.Promise<any> {
     return new Promise((resolve, reject) => {
       //get uid
       this.db.list('users/', {
         query: {
-          orderByChild: 'email',
-          equalTo: email
+          orderByChild: 'ra',
+          equalTo: ra
         }
       }).take(1).subscribe(snapshots => {
         if (snapshots.length == 1) {

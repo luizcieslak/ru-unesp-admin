@@ -28,7 +28,7 @@ export class SaldoComponent implements OnInit {
 
     //Create FormBuilder with your inputs and their Validators.
     this.saldoForm = this.formBuilder.group({
-      email: ['', Validators.required],
+      ra: ['', Validators.required],
       amount: ['', Validators.required]
     });
   }
@@ -39,7 +39,7 @@ export class SaldoComponent implements OnInit {
   register(): void {
     this.submitAttempt = true;
     if (this.saldoForm.valid) {
-      this._user.addSaldo(this.saldoForm.value.email, this.saldoForm.value.amount)
+      this._user.addSaldo(this.saldoForm.value.ra, this.saldoForm.value.amount)
         .then(_ => alert('Valor adicionado com sucesso.'))
         .catch(reason => alert(reason));
     }

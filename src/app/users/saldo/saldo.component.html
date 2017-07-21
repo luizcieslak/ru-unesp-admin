@@ -2,11 +2,20 @@
     <h2 style="margin-bottom: 1em">Adicionar Saldo</h2>
     <form class="form" [formGroup]="saldoForm" novalidate>
         <div class="form-group row">
-            <label for="email" class="col-2 col-form-label">Email do usuário</label>
+            <label for="email" class="col-2 col-form-label">RA do usuário</label>
             <div class="col-8">
-                <input class="form-control" type="text" formControlName="email">
-                <p *ngIf="submitAttempt && saldoForm.controls.email.hasError('required')" style="color: #ea6153;">
-                    Email Obrigatório.
+                <input class="form-control" type="text" formControlName="ra">
+                <p *ngIf="submitAttempt && saldoForm.controls.ra.hasError('required')" style="color: #ea6153;" padding>
+                    RA Obrigatório.
+                </p>
+                <p *ngIf="submitAttempt && saldoForm.controls.ra.hasError('invalidRA')" style="color: #ea6153;" padding>
+                    RA Inválido.
+                </p>
+                <p *ngIf="submitAttempt && saldoForm.controls.ra.hasError('maxlength')" style="color: #ea6153;" padding>
+                    RA precisa conter no máximo 9 caracteres.
+                </p>
+                <p *ngIf="submitAttempt && saldoForm.controls.ra.hasError('minlength')" style="color: #ea6153;" padding>
+                    RA precisa conter no mínimo 8 caracteres.
                 </p>
             </div>
         </div>
