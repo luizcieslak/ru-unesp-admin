@@ -26,11 +26,13 @@ export class UserService {
         if (snapshots.length == 1) {
           resolve(Promise.all([
             firebase.database().ref(`users/${snapshots[0].$key}/saldo`).transaction(saldo => saldo + amount),
+            //add transaction to history
             firebase.database().ref(`users/${snapshots[0].$key}/saldo_history`).push({
               type: 'recarga',
               description: `Adicionou ${amount} tíquetes de refeição`,
               admin: this._admin.email,
-              timestamp: moment().valueOf()
+              timestamp: moment().valueOf(),
+              reverseTimestamp: Number.MAX_SAFE_INTEGER - moment().valueOf()
             })
           ]));
         } else {
