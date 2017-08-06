@@ -30,7 +30,7 @@
             <form class="form-inline my-2 my-lg-0" style="padding-right: 8px">
                 <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" (ngModelChange)="gotoDate(date)">
                 <div class="input-group-addon" (click)="d.toggle()">
-                    <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+                    <i class="fa fa-calendar" aria-hidden="true" style="width: 1.2rem; height: 1rem; cursor: pointer;"></i>
                 </div>
             </form>
         </ul>
@@ -46,11 +46,11 @@
     </div>
 </nav>
 <router-outlet></router-outlet>
-<footer class="footer">
+<footer class="footer bg-faded">
     <div class="container">
-        <span class="text-muted">
+        <span class="text-center text-muted">
             Feito por Luiz Cieslak - Projeto de TCC da UNESP Bauru -
-            <a class="fa fa-github" href="https://github.com/luizcieslak/ru-unesp-admin"></a>
+            <button type="button" class="btn btn-link btn-sm pull-right">Fork me on GitHub <i class="fa fa-github" aria-hidden="true"></i></button>
         </span>
     </div>
 </footer>

@@ -6,7 +6,7 @@
             <div class="col-8">
                 <div class="input-group">
                     <div class="input-group-addon" (click)="d.toggle()">
-                        <img src="assets/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;" />
+                        <i class="fa fa-calendar" aria-hidden="true" style="width: 1.2rem; height: 1rem; cursor: pointer;"></i>
                     </div>
                     <input class="form-control" formControlName="date" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="date" ngbDatepicker #d="ngbDatepicker" (ngModelChange)="datePicker(date)">
                 </div>
