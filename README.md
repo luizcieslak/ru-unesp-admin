@@ -1,5 +1,6 @@
 # ru-unesp-admin
 Projeto de TCC - Interface web para adição de cardápio e outras funções relacionadas ao RU.
+
 Projeto em andamento com previsão de término para Dezembro/2017.
 
 # Instalação
@@ -8,7 +9,7 @@ Projeto em andamento com previsão de término para Dezembro/2017.
 
 2. Clonar o repositórioe instalar as dependências do `npm`
 ```
-git clone https://github.com/luizcieslak/ru-unesp.git
+git clone https://github.com/luizcieslak/ru-unesp-admin.git
 cd ru-unesp-admin
 npm install
 ```
