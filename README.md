@@ -14,7 +14,7 @@ cd ru-unesp-admin
 npm install
 ```
 
-4 - Criar um arquivo na pasta raiz chamado `firebase-config.ts`. Em seguida, adicionar as seguintes informações:
+3. Criar um arquivo na pasta raiz chamado `firebase-config.ts`. Em seguida, adicionar as seguintes informações:
 ```
 export const FirebaseConfig = {
     apiKey: "AIzaSyDBehRyedcZh1tRknKB_H1Foz52n-sGmE0",
@@ -26,7 +26,7 @@ export const FirebaseConfig = {
 };
 ```
 
-5 - Para executar, execute o comando `ng serve` no terminal dentro da pasta `ru-unesp-admin`.
+4. Para executar, execute o comando `ng serve` no terminal dentro da pasta `ru-unesp-admin`.
 
 # Licença
 
