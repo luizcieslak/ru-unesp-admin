@@ -14,15 +14,23 @@ cd ru-unesp-admin
 npm install
 ```
 
-3. Criar um arquivo na pasta raiz chamado `firebase-config.ts`. Em seguida, adicionar as seguintes informações:
+3. Criar um `environment.ts` dentro da pasta `src/environments` . Em seguida, adicionar as seguintes informações:
 ```
-export const FirebaseConfig = {
+// The file contents for the current environment will overwrite these during build.
+// The build system defaults to the dev environment which uses `environment.ts`, but if you do
+// `ng build --env=prod` then `environment.prod.ts` will be used instead.
+// The list of which env maps to which file can be found in `.angular-cli.json`.
+
+export const environment = {
+  production: false,
+  firebase:{
     apiKey: "AIzaSyDBehRyedcZh1tRknKB_H1Foz52n-sGmE0",
     authDomain: "unespru-test.firebaseapp.com",
     databaseURL: "https://unespru-test.firebaseio.com",
     projectId: "unespru-test",
     storageBucket: "unespru-test.appspot.com",
     messagingSenderId: "1034227533456"
+  }
 };
 ```
 
