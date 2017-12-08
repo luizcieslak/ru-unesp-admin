@@ -6,13 +6,15 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 //To config NgbDatepicker
 import { NgbDatepickerConfig, NgbDateStruct, NgbDatepickerI18n } from '@ng-bootstrap/ng-bootstrap';
 
-
-import { Subscription } from 'rxjs';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Subscription, Observable } from 'rxjs';
 import { FirebaseListObservable } from 'angularfire2/database';
-
+import { environment } from '../../../environments/environment';
 
 //providers
 import { RefeicaoService } from '../../providers/refeicao.service';
+
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-edit-refeicao',
@@ -37,7 +39,7 @@ export class EditRefeicaoComponent implements OnInit {
 
   constructor(private titleService: Title, private route: ActivatedRoute,
     private _refeicao: RefeicaoService, private router: Router,
-    private formBuilder: FormBuilder) {
+    private formBuilder: FormBuilder, private http: Http) {
     //Mudar o título do documento
     titleService.setTitle('ru-admin | Novo usuário');
 
@@ -107,14 +109,42 @@ export class EditRefeicaoComponent implements OnInit {
     if (this.editForm.valid) {
       //send to database
       this._refeicao.edit(this.refeicaoKey, this.editForm.value)
-        .then(_ => alert('Refeição alterada no banco de dados'))
+        .then(_ => {
+          //Criar a timestamp da refeição editada através da variável date
+          const timestamp = moment(`${this.date.year}-${this.date.month}-${this.date.day}`)
+            .hour(11).minute(30).valueOf();
+          //Mandar uma notificação para os usuários cadastrados no tópico da refeição (FCM)
+          this.sendNotification(timestamp)
+            .subscribe(result => console.log('Envio de notificação para o tópico',timestamp, result));
+          alert('Refeição alterada no banco de dados')
+        })
         .catch(reason => console.log('error in editRefeicao#register', reason))
     } else {
       this.formError = 'Todos os campos são obrigatórios.'
     }
   }
 
-  newRefeicao(){
+  sendNotification(timestamp: number): Observable<any> {
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Authorization', 'key=' + environment.FCMKey);
+    return this.http.post('https://fcm.googleapis.com/fcm/send', {
+      "notification": {
+        "title": "Alteração de refeição",
+        "body": `Alguns itens do cardápio de ${moment(timestamp).format('L')} foram alterados. Veja mais detalhes no aplicativo.`,
+        "sound": "default",
+        "click_action": "FCM_PLUGIN_ACTIVITY",
+        "icon": "fcm_push_icon"
+      },
+      "data": {
+        "timestamp": `${timestamp}`,
+      },
+      "to": `/topics/${timestamp}`
+    }, new RequestOptions({ headers: headers }))
+      .map(res => res.json())
+  }
+
+  newRefeicao() {
     this.router.navigate(['/refeicoes/new']);
   }
 

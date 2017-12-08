@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Title }     from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 
 import { Subscription } from 'rxjs';
 import { FirebaseListObservable } from 'angularfire2/database';
-
 
 //providers
 import { RefeicaoService } from '../../providers/refeicao.service';
@@ -23,7 +22,7 @@ export class RefeicaoDetailComponent implements OnInit {
   refeicao: FirebaseListObservable<any>;
 
   constructor(private titleService: Title, private route: ActivatedRoute, private router: Router,
-  private _refeicao: RefeicaoService) { 
+    private _refeicao: RefeicaoService) {
     //Mudar o título do documento
     titleService.setTitle('ru-admin | Detalhes da refeição');
   }
@@ -37,13 +36,13 @@ export class RefeicaoDetailComponent implements OnInit {
           day: +params['day']
         }
         this.getRefeicao(this.date);
-      }else{
+      } else {
         this.date = undefined;
       }
     })
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.sub.unsubscribe();
   }
 
@@ -55,7 +54,7 @@ export class RefeicaoDetailComponent implements OnInit {
     });
   }
 
-  gotoDate(date: any){
-    this.router.navigate(['refeicoes/detail',this.date.year,this.date.month,this.date.day]);
+  gotoDate(date: any) {
+    this.router.navigate(['refeicoes/detail', this.date.year, this.date.month, this.date.day]);
   }
 }

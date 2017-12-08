@@ -1,21 +1,3 @@
 <div class="container text-center">
     <h1 style="font-size:128px">ru-admin</h1>
 </div>
-
-<ng-template #content>
-    <div class="modal-header">
-        <h4 class="modal-title">Modal title</h4>
-        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    </div>
-    <div class="modal-body">
-        <p>One fine body&hellip;</p>
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="c(false)">Close</button>
-        <button type="button" class="btn" (click)="c(true)">Save</button>
-    </div>
-</ng-template>
-
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
