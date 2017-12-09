@@ -74,13 +74,13 @@ export class AppComponent {
     ngbConfig.maxDate = { year: 2099, month: 12, day: 31 };
 
     // days that don't belong to current month are not visible
-    ngbConfig.outsideDays = 'hidden';
+    ngbConfig.firstDayOfWeek = 7;
 
     // weekends are disabled
-    ngbConfig.markDisabled = (date: NgbDateStruct) => {
-      const d = new Date(date.year, date.month - 1, date.day);
-      return d.getDay() === 0 || d.getDay() === 6;
-    };
+    // ngbConfig.markDisabled = (date: NgbDateStruct) => {
+    //   const d = new Date(date.year, date.month - 1, date.day);
+    //   return d.getDay() === 0 || d.getDay() === 6;
+    // };
   }
 
   gotoDate(date: any): void {
