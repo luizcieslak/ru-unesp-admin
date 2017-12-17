@@ -1,28 +1,41 @@
-# RuAdmin
+# ru-unesp-admin
+Projeto de TCC - Interface web para adição de cardápio e outras funções relacionadas ao RU.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.2.0.
+Projeto em andamento com previsão de término para Dezembro/2017.
 
-## Development server
+# Instalação
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+1. Necessário possuir [node.js](https://nodejs.org/en/) e o [Angular CLI](https://github.com/angular/angular-cli)
 
-## Code scaffolding
+2. Clonar o repositórioe instalar as dependências do `npm`
+```
+git clone https://github.com/luizcieslak/ru-unesp-admin.git
+cd ru-unesp-admin
+npm install
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+3. Criar um `environment.ts` dentro da pasta `src/environments` . Em seguida, adicionar as seguintes informações:
+```
+// The file contents for the current environment will overwrite these during build.
+// The build system defaults to the dev environment which uses `environment.ts`, but if you do
+// `ng build --env=prod` then `environment.prod.ts` will be used instead.
+// The list of which env maps to which file can be found in `.angular-cli.json`.
 
-## Build
+export const environment = {
+  production: false,
+  firebase:{
+    apiKey: "AIzaSyDBehRyedcZh1tRknKB_H1Foz52n-sGmE0",
+    authDomain: "unespru-test.firebaseapp.com",
+    databaseURL: "https://unespru-test.firebaseio.com",
+    projectId: "unespru-test",
+    storageBucket: "unespru-test.appspot.com",
+    messagingSenderId: "1034227533456"
+  }
+};
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+4. Para executar, execute o comando `ng serve` no terminal dentro da pasta `ru-unesp-admin`.
 
-## Running unit tests
+# Licença
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Este software segue as regras da GNU General Public License v3.0. [ver mais](https://www.gnu.org/licenses/gpl-3.0.en.html)
