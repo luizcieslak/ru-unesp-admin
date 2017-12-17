@@ -71,13 +71,13 @@
             <div class="col-sm-offset-2 col-sm-10">
                 <p *ngIf="submitAttempt && formError" style="color: #ea6153;">{{ formError }}</p>
                 <button type="submit" class="btn btn-default" (click)="modalConfirm(modalContent)">Registrar</button>
-                <button class="btn btn-default" (click)="randomUser()">random user</button>
+                <!-- <button class="btn btn-default" (click)="randomUser()">random user</button> -->
             </div>
         </div>
     </form>
 
 
-    <pre>{{ userForm.value | json }}</pre>
+    <!-- <pre>{{ userForm.value | json }}</pre> -->
 </div>
 
 <ng-template #modalContent let-c="close" let-d="dismiss">
