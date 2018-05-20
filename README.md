@@ -1,7 +1,5 @@
 # ru-unesp-admin
-Projeto de TCC - Interface web para adição de cardápio e outras funções relacionadas ao RU.
-
-Projeto em andamento com previsão de término para Dezembro/2017.
+[Projeto de TCC](https://drive.google.com/file/d/11iexLLQwmG_AlxCW5669dcAnTZVjfohY/view?usp=sharing) - Interface web para adição de cardápio e outras funções relacionadas ao RU.
 
 # Instalação
 
